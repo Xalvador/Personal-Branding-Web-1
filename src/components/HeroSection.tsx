@@ -8,151 +8,75 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onExploreTopics }) => {
   return (
-    <section className="relative pt-36 pb-28 md:pt-48 md:pb-40 overflow-hidden bg-[#FAF8F5]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="pt-2 pb-8 sm:pb-12 bg-[#FAF8F5]">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
-        {/* Top Minimalist Editorial Masthead Bar */}
-        <div className="border-b border-[#13260A]/15 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#E2872A]" />
-            <span className="text-xs font-bold tracking-widest text-[#13260A] uppercase font-display">
-              ROFIANTO • MOTIVATOR &amp; PUBLIC SPEAKER • GROWTH PRACTITIONER
-            </span>
-          </div>
-          <div className="text-xs font-semibold text-[#0E0E0E]/50 tracking-wider uppercase font-sans">
-            SURABAYA &amp; JAKARTA, INDONESIA
-          </div>
-        </div>
-
-        {/* 
-          ABSOLUTE FOCAL POINT: 
-          Massive whitespace, monumental scale, high-contrast editorial serif typography 
-        */}
-        <div className="pt-14 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 border-b border-[#13260A]/15">
-          <div className="max-w-6xl">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#E2872A] block mb-6 font-display">
-              FILOSOFI &amp; GERAKAN
-            </span>
-            <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[7.25rem] xl:text-[8.5rem] font-serif font-normal tracking-[-0.035em] leading-[0.93] text-[#0E0E0E] [text-wrap:balance]">
-              Naik Level. <br />
-              <span className="italic font-normal text-[#13260A] tracking-[-0.025em] block mt-2 sm:mt-4">
-                Hidup Berdampak.
-              </span>
-            </h1>
-          </div>
-        </div>
-
-        {/* Lower Editorial Split Layout (Subheadline, Organizer Matrix, and Tailored Photography) */}
-        <div className="pt-16 sm:pt-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* Theatrical Cinema Rounded Card Container (Iconic Lewis Howes Hero Layout) */}
+        <div className="relative rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl min-h-[580px] sm:min-h-[660px] lg:min-h-[720px] flex flex-col justify-end items-center text-center p-6 sm:p-12 lg:p-16 border border-[#13260A]/10 bg-[#071304]">
           
-          {/* Left Column: Subheadline, CTAs, and Quick-Scan Organizer Matrix */}
-          <div className="lg:col-span-7 space-y-10">
+          {/* Deep Theatrical Stage Background with Atmospheric Spotlight Beam */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#091705]/90 via-[#13260A]/95 to-[#071304] z-0" />
+          
+          {/* Subtle Stage Lighting Accents (Cyan/Emerald & Warm Golden Rim Light) */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[420px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/20 via-transparent to-transparent pointer-events-none z-0" />
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#E2872A]/10 rounded-full blur-3xl pointer-events-none z-0" />
+          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none z-0" />
+
+          {/* Center Keynote Speaker Photograph */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+            <div className="relative w-full h-full max-w-3xl mx-auto flex items-center justify-center">
+              <img
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1400&q=85"
+                alt="Rofianto Keynote Speaker Stage Presence"
+                className="w-full h-full object-cover object-top opacity-55 contrast-125 filter mix-blend-luminosity scale-105"
+              />
+              {/* Radial gradient mask to focus on face and stage presence */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071304] via-[#071304]/60 to-transparent" />
+            </div>
+          </div>
+
+          {/* Centered Editorial Typography Overlay (Matching Lewis Howes Exact Rhythm) */}
+          <div className="relative z-10 max-w-3xl mx-auto space-y-6 sm:space-y-8 pb-4">
             
-            {/* Thoughtful, Human, Non-Generic Subheadline */}
-            <p className="text-lg sm:text-2xl text-[#0E0E0E]/85 leading-relaxed font-normal max-w-2xl font-sans [text-wrap:balance]">
-              Saya membantu generasi muda, mahasiswa, dan profesional keluar dari overthinking, membangun sistem kerja cerdas dengan AI, serta mengeksekusi rencana nyata tanpa bergantung pada euforia motivasi sesaat.
+            <div className="space-y-1 sm:space-y-2">
+              {/* Italic Serif Top Line (Matches: 'Become the Hero of') */}
+              <div className="font-serif italic font-normal text-2xl sm:text-4xl lg:text-5xl text-[#FAF8F5]/90 tracking-tight [text-wrap:balance]">
+                Naik Level &amp;
+              </div>
+
+              {/* Bold Sans Bottom Line (Matches: 'Your Own Story') */}
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black font-display text-white tracking-tight leading-[1.05] uppercase drop-shadow-md">
+                Hidup Berdampak
+              </h1>
+            </div>
+
+            {/* Sub-Manifesto */}
+            <p className="text-xs sm:text-sm md:text-base text-[#FAF8F5]/80 max-w-xl mx-auto leading-relaxed font-sans font-normal">
+              Membantu generasi muda, mahasiswa, dan profesional keluar dari overthinking, membangun sistem produktivitas dengan AI, serta mengeksekusi rencana nyata.
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            {/* White Pill Action Button (Matches: 'Start Here →') */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <button
                 onClick={onOpenBooking}
-                className="px-8 py-4 text-xs sm:text-sm font-bold tracking-widest uppercase text-[#FAF8F5] bg-[#13260A] hover:bg-[#0E0E0E] active:bg-[#1E3A10] transition-colors flex items-center justify-center gap-3 cursor-pointer shadow-sm"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white hover:bg-[#FAF8F5] text-[#0E0E0E] font-bold text-xs sm:text-sm tracking-wide transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer group"
               >
-                <span>Undang Saya sebagai Speaker</span>
-                <ArrowRight className="w-4 h-4 text-[#E2872A]" />
+                <span>Mulai Dari Sini</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
               <button
                 onClick={onExploreTopics}
-                className="px-8 py-4 text-xs sm:text-sm font-bold tracking-widest uppercase text-[#0E0E0E] hover:text-[#13260A] bg-transparent hover:bg-[#E6DFD1]/40 border border-[#13260A]/25 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs sm:text-sm tracking-wide transition-all backdrop-blur-sm flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Lihat 6 Topik Speaking</span>
+                <span>Lihat Topik Keynote</span>
               </button>
             </div>
 
-            {/* 5-Second Organizer Metadata Matrix (Clean Lines, High Legibility, No AI Slop Brackets) */}
-            <div className="pt-10 border-t border-[#13260A]/15 grid grid-cols-1 sm:grid-cols-3 gap-8 text-xs">
-              <div className="space-y-2">
-                <span className="text-xs font-bold tracking-wider uppercase text-[#13260A] block font-display">
-                  Topik Utama
-                </span>
-                <p className="text-[#0E0E0E]/80 font-medium leading-snug font-sans text-xs">
-                  Growth Mindset, Eksekusi Aksi, Produktivitas AI &amp; Personal Branding.
-                </p>
-              </div>
-
-              <div className="space-y-2 sm:border-l sm:border-[#13260A]/15 sm:pl-6">
-                <span className="text-xs font-bold tracking-wider uppercase text-[#13260A] block font-display">
-                  Target Audiens
-                </span>
-                <p className="text-[#0E0E0E]/80 font-medium leading-snug font-sans text-xs">
-                  Mahasiswa, Gen Z, Fresh Graduates, &amp; Tim In-House Korporasi.
-                </p>
-              </div>
-
-              <div className="space-y-2 sm:border-l sm:border-[#13260A]/15 sm:pl-6">
-                <span className="text-xs font-bold tracking-wider uppercase text-[#C8681B] block font-display">
-                  Prinsip Sesi
-                </span>
-                <p className="text-[#0E0E0E]/80 font-medium leading-snug font-sans text-xs">
-                  Framework ROFI 4A: Berorientasi tindakan terukur, zero toxic-positivity.
-                </p>
-              </div>
-            </div>
-
-            {/* Supported Formats */}
-            <div className="pt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-[#0E0E0E]/70 uppercase tracking-wider font-sans">
-              <span>Seminar Akbar</span>
-              <span className="text-[#13260A]/30">•</span>
-              <span>Interactive Workshop</span>
-              <span className="text-[#13260A]/30">•</span>
-              <span>Panel Discussion</span>
-              <span className="text-[#13260A]/30">•</span>
-              <span>Corporate In-House</span>
-            </div>
-
           </div>
 
-          {/* Right Column: Tailored Formal Portrait Photography */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative">
-              
-              {/* Frame with Sharp Drop Shadow & Border */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#E6DFD1] border border-[#13260A]/20 shadow-[8px_8px_0px_0px_#13260A]">
-                
-                {/* Real High-Contrast Editorial Portrait Photography */}
-                <img
-                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80"
-                  alt="Rofianto — Motivator and Public Speaker in tailored formal suit"
-                  className="w-full h-full object-cover object-top grayscale contrast-110 filter hover:grayscale-0 transition-all duration-700"
-                  loading="eager"
-                />
-
-                {/* Subtle Filmic Tone & Bottom Plaque */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0E0E0E]/85 via-transparent to-transparent pointer-events-none" />
-
-                <div className="absolute bottom-5 left-5 right-5 text-[#FAF8F5] z-10 space-y-1.5">
-                  <div className="text-[11px] font-bold tracking-wider uppercase text-[#E2872A] font-display">
-                    PROFIL PEMBICARA RESMI
-                  </div>
-                  <div className="font-display font-bold text-xl tracking-tight">
-                    Rofianto
-                  </div>
-                  <p className="text-xs text-[#FAF8F5]/85 font-serif italic leading-relaxed">
-                    "Setiap orang punya potensi untuk naik level, tetapi perubahan membutuhkan sistem dan tindakan nyata."
-                  </p>
-                </div>
-              </div>
-
-              {/* Editorial Caption */}
-              <div className="mt-3 flex items-center justify-between text-xs font-semibold text-[#0E0E0E]/60 uppercase tracking-wider font-sans">
-                <span>Dokumentasi Resmi</span>
-                <span>Portret Panggung</span>
-              </div>
-
-            </div>
-          </div>
+          {/* Bottom subtle edge glow */}
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E2872A]/40 to-transparent" />
 
         </div>
 

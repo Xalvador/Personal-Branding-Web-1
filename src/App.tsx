@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
+import { TopAnnouncementBar } from './components/TopAnnouncementBar';
 import { Navigation } from './components/Navigation';
 import { HeroSection } from './components/HeroSection';
-import { IntroductionSection } from './components/IntroductionSection';
+import { MediaLogoBar } from './components/MediaLogoBar';
+import { FeaturedSessionsSection } from './components/FeaturedSessionsSection';
+import { FeaturedBookSection } from './components/FeaturedBookSection';
 import { StorySection } from './components/StorySection';
-import { PhilosophySection } from './components/PhilosophySection';
-import { SpeakingTopicsSection } from './components/SpeakingTopicsSection';
-import { FrameworkSection } from './components/FrameworkSection';
+import { ThreePillarsSection } from './components/ThreePillarsSection';
+import { PodcastAppSection } from './components/PodcastAppSection';
+import { TopicsArchiveSection } from './components/TopicsArchiveSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { TestimonialSection } from './components/TestimonialSection';
-import { InsightsSection } from './components/InsightsSection';
-import { GallerySection } from './components/GallerySection';
-import { CollaborationSection } from './components/CollaborationSection';
-import { FinalCtaSection } from './components/FinalCtaSection';
+import { BottomCtaBanner } from './components/BottomCtaBanner';
 import { ContactSection } from './components/ContactSection';
 import { FooterSection } from './components/FooterSection';
 import { BookingModal } from './components/BookingModal';
@@ -29,80 +29,80 @@ export default function App() {
     setIsBookingOpen(true);
   };
 
-  const handleScrollToTopics = () => {
-    const el = document.getElementById('topics');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleScrollToContact = () => {
-    const el = document.getElementById('contact');
+  const handleScrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F7F2] text-[#111111] flex flex-col font-sans selection:bg-[#F5A23A] selection:text-[#111111]">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E0E] flex flex-col font-sans selection:bg-[#E2872A] selection:text-white">
       
-      {/* 1. Sticky Minimal Navigation */}
-      <Navigation onOpenBooking={() => handleOpenBooking()} />
+      {/* 1. Top Announcement Bar (Matching Lewis Howes Top Green Banner) */}
+      <TopAnnouncementBar
+        onLearnMore={() => handleScrollToSection('book')}
+      />
+
+      {/* 2. Modern Navigation with Pill CTA */}
+      <Navigation
+        onOpenBooking={() => handleOpenBooking()}
+        onOpenSearch={() => handleScrollToSection('insights')}
+      />
 
       <main className="flex-1">
-        {/* 2. Hero Section */}
+        
+        {/* 3. Theatrical Cinema Rounded Hero Card (Matching Lewis Howes Hero Banner) */}
         <HeroSection
           onOpenBooking={() => handleOpenBooking()}
-          onExploreTopics={handleScrollToTopics}
+          onExploreTopics={() => handleScrollToSection('topics')}
         />
 
-        {/* 3. Introduction Section */}
-        <IntroductionSection
-          onOpenBooking={() => handleOpenBooking()}
+        {/* 4. Grayscale Media & Partner Logo Strip */}
+        <MediaLogoBar />
+
+        {/* 5. Featured Keynotes & Sesi Pilihan (Matching Lewis Howes Featured Guests Carousel) */}
+        <FeaturedSessionsSection
+          onSelectTopic={(topic) => handleOpenBooking(`Topik Pilihan: ${topic}`)}
+          onViewAllTopics={() => handleScrollToSection('insights')}
         />
 
-        {/* 4. Personal Story Section & Timeline */}
+        {/* 6. Featured Book & Signature Framework (Matching Lewis Howes Book Section) */}
+        <FeaturedBookSection
+          onLearnMore={() => handleOpenBooking('Konsultasi Framework ROFI 4A')}
+        />
+
+        {/* 7. My Story Section with Diagonal Geometric Slash & Cutout Portrait */}
         <StorySection />
 
-        {/* 5. Philosophy Section (01 MINDSET, 02 ACTION, 03 AI, 04 IMPACT) */}
-        <PhilosophySection />
-
-        {/* 6. Speaking Topics (6 Premium Cards) */}
-        <SpeakingTopicsSection
-          onSelectTopicForBooking={(topic) => handleOpenBooking(topic)}
+        {/* 8. 3 Pillars of Impact (Matching Lewis Howes: Books, Summit, Documentary) */}
+        <ThreePillarsSection
+          onOpenBooking={() => handleOpenBooking()}
+          onExploreBooks={() => handleScrollToSection('book')}
+          onExploreTopics={() => handleScrollToSection('topics')}
         />
 
-        {/* 7. Signature Framework (ROFI 4A FRAMEWORK) */}
-        <FrameworkSection />
+        {/* 9. The Naik Level Show / Podcast App Frame Feature */}
+        <PodcastAppSection />
 
-        {/* 8. Speaking Experience (Stats & Logos with honest XX+ placeholders) */}
+        {/* 10. Curated Topics & Episode Archive (Interactive Categories) */}
+        <TopicsArchiveSection />
+
+        {/* 11. Speaking Experience & Partner Proof */}
         <ExperienceSection />
 
-        {/* 9. Testimonial Section (Apa Kata Mereka?) */}
+        {/* 12. Client & Organizer Testimonials */}
         <TestimonialSection />
 
-        {/* 10. Insights Section (Pikiran yang Saya Bagikan Bento Grid) */}
-        <InsightsSection />
+        {/* 13. Massive Bottom Community CTA Banner with Inline Form */}
+        <BottomCtaBanner />
 
-        {/* 11. Photo Gallery (Behind the Journey) */}
-        <GallerySection />
-
-        {/* 12. Collaboration Section (SPEAKER, TRAINER, MODERATOR, COLLABORATION) */}
-        <CollaborationSection
-          onSelectCollaboration={(type) => handleOpenBooking(`Format Kolaborasi: ${type}`)}
-        />
-
-        {/* 13. Final CTA Section */}
-        <FinalCtaSection
-          onOpenBooking={() => handleOpenBooking()}
-          onScrollToContact={handleScrollToContact}
-        />
-
-        {/* 14. Contact Section */}
+        {/* 14. Formal Speaking Booking Inquiry Form */}
         <ContactSection />
+
       </main>
 
-      {/* 15. Footer */}
+      {/* 15. Clean Multi-Column Footer */}
       <FooterSection />
 
       {/* Global Interactive Booking & Proposal Brief Modal */}

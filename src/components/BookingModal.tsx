@@ -90,7 +90,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0E0E0E]/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-xl bg-[#FAF8F5] border border-[#13260A] p-8 sm:p-10 space-y-6 shadow-[12px_12px_0px_0px_#13260A] my-8 max-h-[92vh] overflow-y-auto">
+      <div className="relative w-full max-w-xl bg-[#FAF8F5] border border-[#13260A]/20 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl my-8 max-h-[92vh] overflow-y-auto">
         
         {/* Top Header */}
         <div className="flex items-start justify-between pb-4 border-b border-[#13260A]/15">
@@ -107,7 +107,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1 text-[#0E0E0E]/60 hover:text-[#0E0E0E] hover:bg-[#F2EFE8] transition-colors"
+            className="p-1.5 text-[#0E0E0E]/60 hover:text-[#0E0E0E] hover:bg-[#F2EFE8] rounded-full transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -273,10 +273,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </span>
               <button
                 type="submit"
-                className="px-6 py-2.5 text-xs font-bold tracking-widest uppercase text-[#FAF8F5] bg-[#13260A] hover:bg-[#0E0E0E] transition-colors flex items-center gap-1.5 cursor-pointer font-sans"
+                className="px-7 py-3 rounded-full text-xs font-bold tracking-wide uppercase text-white bg-[#E2872A] hover:bg-[#cf741b] transition-colors flex items-center gap-1.5 cursor-pointer font-sans shadow-md"
               >
                 <span>Kirim Permintaan</span>
-                <Send className="w-3.5 h-3.5 text-[#E2872A]" />
+                <Send className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
 
@@ -284,7 +284,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         ) : (
           /* Confirmation Screen */
           <div className="text-center py-6 space-y-4 font-sans">
-            <div className="w-12 h-12 bg-[#13260A] text-[#E2872A] flex items-center justify-center mx-auto">
+            <div className="w-12 h-12 bg-[#13260A] text-[#E2872A] rounded-full flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-6 h-6" />
             </div>
 
@@ -296,7 +296,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               Brief speaking telah dirangkum dan siap diteruskan langsung ke WhatsApp manajemen Rofianto.
             </p>
 
-            <div className="p-4 bg-[#F2EFE8] border-l-2 border-[#13260A] text-left text-xs space-y-1 text-[#0E0E0E]">
+            <div className="p-4 bg-[#F2EFE8] rounded-2xl border border-[#13260A]/10 text-left text-xs space-y-1 text-[#0E0E0E]">
               <div>• Pemohon: {formData.nama} ({formData.organisasi})</div>
               <div>• Acara: {formData.jenisAcara} ({formData.jumlahPeserta})</div>
               <div>• Topik: {formData.topik}</div>
@@ -306,7 +306,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             <div className="space-y-2 pt-2">
               <button
                 onClick={handleWhatsApp}
-                className="w-full py-3 px-4 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer font-sans"
+                className="w-full py-3.5 px-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer font-sans shadow-md"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Kirim Langsung ke WhatsApp Resmi</span>
@@ -314,7 +314,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <button
                 onClick={handleCopy}
-                className="w-full py-2.5 px-4 bg-[#FAF8F5] border border-[#13260A]/30 hover:bg-[#F2EFE8] text-[#0E0E0E] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer font-sans"
+                className="w-full py-3 px-4 rounded-full bg-white border border-[#13260A]/30 hover:bg-[#FAF8F5] text-[#0E0E0E] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer font-sans"
               >
                 {copied ? <CheckCircle2 className="w-4 h-4 text-[#13260A]" /> : <Copy className="w-4 h-4" />}
                 <span>{copied ? 'Tersalin!' : 'Salin Format Surat Permohonan'}</span>

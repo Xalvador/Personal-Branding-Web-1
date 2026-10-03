@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Search, ArrowRight } from 'lucide-react';
 
 interface NavigationProps {
   onOpenBooking: () => void;
+  onOpenSearch?: () => void;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({ onOpenBooking }) => {
+export const Navigation: React.FC<NavigationProps> = ({ onOpenBooking, onOpenSearch }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -20,68 +21,83 @@ export const Navigation: React.FC<NavigationProps> = ({ onOpenBooking }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#13260A]/10 py-4 shadow-[0_1px_0_0_rgba(19,38,10,0.05)]'
-            : 'bg-transparent py-6 md:py-8'
+            ? 'bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#13260A]/10 py-3.5 shadow-sm'
+            : 'bg-[#FAF8F5] py-4 sm:py-5 border-b border-[#13260A]/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
-            {/* Left: Typographic Wordmark */}
+            {/* Left: Bold Brand Wordmark matching Lewis Howes style */}
             <a
               href="#"
-              className="flex items-baseline gap-3 group"
+              className="flex items-center gap-2 group"
             >
-              <span className="text-xl sm:text-2xl font-extrabold tracking-[0.18em] text-[#0E0E0E] group-hover:text-[#13260A] transition-colors font-display uppercase">
+              <span className="text-xl sm:text-2xl font-black tracking-tight text-[#0E0E0E] group-hover:text-[#13260A] transition-colors font-display uppercase">
                 ROFIANTO
-              </span>
-              <span className="hidden sm:inline-block text-xs font-sans font-semibold text-[#13260A]/70 border-l border-[#13260A]/20 pl-3">
-                Speaker &amp; Growth Practitioner
               </span>
             </a>
 
-            {/* Center: Editorial Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-10 text-xs font-semibold tracking-wider text-[#0E0E0E]/70 uppercase">
-              <a href="#about" className="hover:text-[#13260A] hover:underline underline-offset-8 transition-colors">
-                About
+            {/* Center: Clean Modern Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-wide text-[#0E0E0E]/80">
+              <a href="#topics" className="hover:text-[#13260A] transition-colors">
+                Topik Speaking
               </a>
-              <a href="#speaking" className="hover:text-[#13260A] hover:underline underline-offset-8 transition-colors">
-                Speaking
+              <a href="#book" className="hover:text-[#13260A] transition-colors">
+                Buku &amp; Framework
               </a>
-              <a href="#topics" className="hover:text-[#13260A] hover:underline underline-offset-8 transition-colors">
-                Topics
+              <a href="#story" className="hover:text-[#13260A] transition-colors">
+                My Story
               </a>
-              <a href="#experience" className="hover:text-[#13260A] hover:underline underline-offset-8 transition-colors">
-                Experience
+              <a href="#podcast" className="hover:text-[#13260A] transition-colors">
+                Podcast &amp; Show
               </a>
-              <a href="#insights" className="hover:text-[#13260A] hover:underline underline-offset-8 transition-colors">
-                Insights
+              <a href="#insights" className="hover:text-[#13260A] transition-colors">
+                Wawasan
               </a>
-              <a href="#contact" className="hover:text-[#13260A] hover:underline underline-offset-8 transition-colors">
-                Contact
+              <a href="#contact" className="hover:text-[#13260A] transition-colors">
+                Kontak
               </a>
             </nav>
 
-            {/* Right: Sharp Masculine CTA */}
+            {/* Right: Search Icon + Orange Pill CTA Button (matching Lewis Howes Subscribe Now) */}
             <div className="hidden lg:flex items-center gap-4">
               <button
-                onClick={onOpenBooking}
-                className="px-6 py-2.5 text-xs font-bold tracking-widest uppercase text-[#FAF8F5] bg-[#13260A] hover:bg-[#0E0E0E] active:bg-[#1E3A10] transition-colors whitespace-nowrap cursor-pointer shadow-sm"
+                onClick={onOpenSearch}
+                aria-label="Cari Materi"
+                className="p-2 text-[#0E0E0E]/60 hover:text-[#0E0E0E] transition-colors cursor-pointer"
               >
-                Undang Saya
+                <Search className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={onOpenBooking}
+                className="px-6 py-2.5 rounded-full text-xs font-bold text-white bg-[#E2872A] hover:bg-[#cf741b] active:bg-[#b86111] transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>Undang Rofianto</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
             {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-[#0E0E0E] hover:text-[#13260A] focus:outline-none"
-              aria-label="Toggle Navigation"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <div className="lg:hidden flex items-center gap-2">
+              <button
+                onClick={onOpenBooking}
+                className="px-4 py-2 rounded-full text-xs font-bold text-white bg-[#E2872A] shadow-sm cursor-pointer"
+              >
+                Undang
+              </button>
+
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-[#0E0E0E] hover:text-[#13260A] focus:outline-none"
+                aria-label="Toggle Navigation"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
 
           </div>
         </div>
@@ -89,48 +105,48 @@ export const Navigation: React.FC<NavigationProps> = ({ onOpenBooking }) => {
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-[#FAF8F5] border-b border-[#13260A]/10 px-6 pt-4 pb-8 space-y-4 shadow-xl">
-            <nav className="flex flex-col space-y-3.5 text-xs font-bold tracking-widest uppercase text-[#0E0E0E]">
-              <a
-                href="#about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-1.5 border-b border-[#13260A]/10 hover:text-[#13260A]"
-              >
-                About
-              </a>
-              <a
-                href="#speaking"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-1.5 border-b border-[#13260A]/10 hover:text-[#13260A]"
-              >
-                Speaking
-              </a>
+            <nav className="flex flex-col space-y-3.5 text-sm font-semibold text-[#0E0E0E]">
               <a
                 href="#topics"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1.5 border-b border-[#13260A]/10 hover:text-[#13260A]"
               >
-                Topics
+                Topik Speaking
               </a>
               <a
-                href="#experience"
+                href="#book"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1.5 border-b border-[#13260A]/10 hover:text-[#13260A]"
               >
-                Experience
+                Buku &amp; Framework
+              </a>
+              <a
+                href="#story"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-1.5 border-b border-[#13260A]/10 hover:text-[#13260A]"
+              >
+                My Story
+              </a>
+              <a
+                href="#podcast"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-1.5 border-b border-[#13260A]/10 hover:text-[#13260A]"
+              >
+                Podcast &amp; Show
               </a>
               <a
                 href="#insights"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1.5 border-b border-[#13260A]/10 hover:text-[#13260A]"
               >
-                Insights
+                Wawasan
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1.5 hover:text-[#13260A]"
               >
-                Contact
+                Kontak
               </a>
             </nav>
             <div className="pt-2">
@@ -139,28 +155,14 @@ export const Navigation: React.FC<NavigationProps> = ({ onOpenBooking }) => {
                   setMobileMenuOpen(false);
                   onOpenBooking();
                 }}
-                className="w-full py-3 px-4 text-center text-xs font-bold tracking-widest uppercase text-[#FAF8F5] bg-[#13260A] hover:bg-[#0E0E0E] transition-colors cursor-pointer"
+                className="w-full py-3 px-4 rounded-full text-center text-xs font-bold text-white bg-[#E2872A] hover:bg-[#cf741b] transition-colors cursor-pointer"
               >
-                Undang Saya
+                Undang Rofianto sebagai Speaker
               </button>
             </div>
           </div>
         )}
       </header>
-
-      {/* Sticky Mobile CTA bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-t border-[#13260A]/15 px-6 py-3.5 shadow-xl flex items-center justify-between gap-4">
-        <div>
-          <span className="font-extrabold text-sm tracking-wider uppercase text-[#13260A] block">Rofianto</span>
-          <span className="text-[#0E0E0E]/60 text-xs font-sans font-medium">Motivator &amp; Public Speaker</span>
-        </div>
-        <button
-          onClick={onOpenBooking}
-          className="px-5 py-2.5 text-xs font-bold tracking-widest uppercase text-[#FAF8F5] bg-[#13260A] shadow-sm whitespace-nowrap cursor-pointer"
-        >
-          Undang Saya
-        </button>
-      </div>
     </>
   );
 };

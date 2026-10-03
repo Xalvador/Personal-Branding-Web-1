@@ -129,7 +129,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Right Column: Architectural Form */}
-          <div className="lg:col-span-7 bg-[#F2EFE8] border border-[#13260A]/20 p-8 sm:p-12 shadow-[8px_8px_0px_0px_#13260A]">
+          <div className="lg:col-span-7 bg-white border border-[#13260A]/15 rounded-3xl p-8 sm:p-12 shadow-xl">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-6">
                 
@@ -266,10 +266,10 @@ export const ContactSection: React.FC = () => {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-10 py-4 text-xs sm:text-sm font-bold tracking-widest uppercase text-[#FAF8F5] bg-[#13260A] hover:bg-[#0E0E0E] transition-colors flex items-center justify-center gap-3 cursor-pointer shadow-sm font-sans"
+                    className="w-full sm:w-auto px-10 py-4 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-[#E2872A] hover:bg-[#cf741b] active:bg-[#b86111] transition-colors flex items-center justify-center gap-3 cursor-pointer shadow-md font-sans"
                   >
                     <span>Kirim Permintaan Speaking</span>
-                    <Send className="w-4 h-4 text-[#E2872A]" />
+                    <Send className="w-4 h-4 text-white" />
                   </button>
                 </div>
 
