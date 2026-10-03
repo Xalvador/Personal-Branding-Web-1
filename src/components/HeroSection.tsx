@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   onOpenBooking: () => void;
@@ -12,7 +13,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onExplo
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Theatrical Cinema Rounded Card Container (Iconic Lewis Howes Hero Layout) */}
-        <div className="relative rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl min-h-[580px] sm:min-h-[660px] lg:min-h-[720px] flex flex-col justify-end items-center text-center p-6 sm:p-12 lg:p-16 border border-[#13260A]/10 bg-[#071304]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.9, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="relative rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl min-h-[580px] sm:min-h-[660px] lg:min-h-[720px] flex flex-col justify-end items-center text-center p-6 sm:p-12 lg:p-16 border border-[#13260A]/10 bg-[#071304]"
+        >
           
           {/* Deep Theatrical Stage Background with Atmospheric Spotlight Beam */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#091705]/90 via-[#13260A]/95 to-[#071304] z-0" />
@@ -36,7 +42,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onExplo
           </div>
 
           {/* Centered Editorial Typography Overlay (Matching Lewis Howes Exact Rhythm) */}
-          <div className="relative z-10 max-w-3xl mx-auto space-y-6 sm:space-y-8 pb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.85, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="relative z-10 max-w-3xl mx-auto space-y-6 sm:space-y-8 pb-4"
+          >
             
             <div className="space-y-1 sm:space-y-2">
               {/* Italic Serif Top Line (Matches: 'Become the Hero of') */}
@@ -73,12 +84,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onExplo
               </button>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Bottom subtle edge glow */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E2872A]/40 to-transparent" />
 
-        </div>
+        </motion.div>
 
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { MotionReveal } from './ui/motion-reveal';
 
 interface ArticleItem {
   id: string;
@@ -92,82 +93,84 @@ export const TopicsArchiveSection: React.FC = () => {
   });
 
   return (
-    <section id="insights" className="py-20 sm:py-28 bg-[#FAF8F5] border-t border-[#13260A]/10">
+    <section id="insights" className="py-20 sm:py-28 bg-[#FAF8F5] border-t border-[#13260A]/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Left Column: Category Navigator matching Lewis Howes Left Side */}
           <div className="lg:col-span-5 space-y-8">
-            
-            {/* Active Category Display */}
-            <div className="space-y-4">
-              <h2 className="text-4xl sm:text-5xl font-serif text-[#0E0E0E] tracking-tight leading-tight">
-                {activeCategory.title}
-              </h2>
-              <p className="text-sm sm:text-base text-[#0E0E0E]/75 leading-relaxed font-sans">
-                {activeCategory.description}
-              </p>
-              <div>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0E0E0E] hover:text-[#E2872A] transition-colors"
-                >
-                  <span>Semua Tulisan &amp; Catatan</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+            <MotionReveal duration={0.8} yOffset={24}>
+              {/* Active Category Display */}
+              <div className="space-y-4">
+                <h2 className="text-4xl sm:text-5xl font-serif text-[#0E0E0E] tracking-tight leading-tight">
+                  {activeCategory.title}
+                </h2>
+                <p className="text-sm sm:text-base text-[#0E0E0E]/75 leading-relaxed font-sans">
+                  {activeCategory.description}
+                </p>
+                <div>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0E0E0E] hover:text-[#E2872A] transition-colors"
+                  >
+                    <span>Semua Tulisan &amp; Catatan</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
-            </div>
 
-            {/* Inactive Category Navigation Links Stack in Large Typography */}
-            <div className="pt-6 border-t border-[#13260A]/15 space-y-3">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCatId(cat.id)}
-                  className={`block text-2xl sm:text-3xl font-serif transition-colors text-left cursor-pointer ${
-                    selectedCatId === cat.id
-                      ? 'text-[#13260A] font-bold underline underline-offset-8 decoration-2 decoration-[#E2872A]'
-                      : 'text-[#0E0E0E]/35 hover:text-[#0E0E0E]'
-                  }`}
-                >
-                  {cat.title}
-                </button>
-              ))}
-            </div>
-
+              {/* Inactive Category Navigation Links Stack in Large Typography */}
+              <div className="pt-6 border-t border-[#13260A]/15 space-y-3">
+                {CATEGORIES.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCatId(cat.id)}
+                    className={`block text-2xl sm:text-3xl font-serif transition-colors text-left cursor-pointer ${
+                      selectedCatId === cat.id
+                        ? 'text-[#13260A] font-bold underline underline-offset-8 decoration-2 decoration-[#E2872A]'
+                        : 'text-[#0E0E0E]/35 hover:text-[#0E0E0E]'
+                    }`}
+                  >
+                    {cat.title}
+                  </button>
+                ))}
+              </div>
+            </MotionReveal>
           </div>
 
           {/* Right Column: Stacked Article / Episode Rows matching Lewis Howes */}
           <div className="lg:col-span-7 space-y-6 divide-y divide-[#13260A]/10">
-            {filteredArticles.map((article, idx) => (
-              <div
-                key={article.id}
-                className={`${idx !== 0 ? 'pt-6' : ''} flex items-start gap-4 sm:gap-6 group cursor-pointer`}
-              >
-                {/* Thumbnail Photo on the Left */}
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-gray-200 shrink-0 shadow-sm">
-                  <img
-                    src={article.thumbnail}
-                    alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Article Info on the Right */}
-                <div className="space-y-1.5 flex-1">
-                  <div className="flex items-center gap-2 text-[11px] font-bold tracking-wider text-[#0E0E0E]/50 uppercase font-display">
-                    <span className="text-[#E2872A]">{article.tag}</span>
-                    <span>/</span>
-                    <span>{article.date}</span>
+            <MotionReveal delay={0.15} duration={0.8} yOffset={24}>
+              {filteredArticles.map((article, idx) => (
+                <div
+                  key={article.id}
+                  className={`${idx !== 0 ? 'pt-6' : ''} flex items-start gap-4 sm:gap-6 group cursor-pointer`}
+                >
+                  {/* Thumbnail Photo on the Left */}
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-gray-200 shrink-0 shadow-sm">
+                    <img
+                      src={article.thumbnail}
+                      alt={article.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold font-display text-[#0E0E0E] group-hover:text-[#13260A] transition-colors leading-snug">
-                    {article.title}
-                  </h3>
+                  {/* Article Info on the Right */}
+                  <div className="space-y-1.5 flex-1">
+                    <div className="flex items-center gap-2 text-[11px] font-bold tracking-wider text-[#0E0E0E]/50 uppercase font-display">
+                      <span className="text-[#E2872A]">{article.tag}</span>
+                      <span>/</span>
+                      <span>{article.date}</span>
+                    </div>
+
+                    <h3 className="text-base sm:text-lg font-bold font-display text-[#0E0E0E] group-hover:text-[#13260A] transition-colors leading-snug">
+                      {article.title}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </MotionReveal>
           </div>
 
         </div>

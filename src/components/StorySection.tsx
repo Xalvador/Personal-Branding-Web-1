@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, X } from 'lucide-react';
+import { MotionReveal } from './ui/motion-reveal';
 import { TIMELINE_DATA } from '../data/websiteData';
 
 export const StorySection: React.FC = () => {
@@ -13,73 +14,73 @@ export const StorySection: React.FC = () => {
           
           {/* Left Column: Editorial Story Copy (Matching Lewis Howes My Story) */}
           <div className="lg:col-span-7 space-y-6">
-            
-            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#13260A] font-display">
-              My Story
-            </div>
+            <MotionReveal duration={0.8} yOffset={24}>
+              <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#13260A] font-display">
+                My Story
+              </div>
 
-            {/* Giant Serif Headline (Matches: 'How an awkward boy from Ohio became...') */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#0E0E0E] tracking-tight leading-[1.12] [text-wrap:balance]">
-              Bagaimana seorang praktisi teknologi membangun sistem untuk membantu ribuan pemuda naik level...
-            </h2>
+              {/* Giant Serif Headline (Matches: 'How an awkward boy from Ohio became...') */}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#0E0E0E] tracking-tight leading-[1.12] [text-wrap:balance] mt-2 mb-4">
+                Bagaimana seorang praktisi teknologi membangun sistem untuk membantu ribuan pemuda naik level...
+              </h2>
 
-            {/* Narrative text */}
-            <div className="space-y-4 text-base sm:text-lg text-[#0E0E0E]/80 leading-relaxed font-sans">
-              <p>
-                Saya tidak memulai dari panggung yang megah atau latar belakang yang serba mudah. Di masa awal menggeluti rekayasa perangkat lunak dan pemasaran digital, saya berulang kali mengalami sindrom keraguan diri, kelelahan konsistensi, dan ketakutan akan kegagalan.
-              </p>
-              <p>
-                Titik balik terbesar hadir ketika saya menyadari bahwa euforia motivasi sesaat tidak pernah bertahan lama. Yang benar-benar mengubah arah hidup adalah <strong>sistem kebiasaan mikro, kejujuran mengevaluasi diri, dan keberanian memanfaatkan teknologi terkini seperti AI</strong> untuk melipatgandakan dampak.
-              </p>
-            </div>
+              {/* Narrative text */}
+              <div className="space-y-4 text-base sm:text-lg text-[#0E0E0E]/80 leading-relaxed font-sans mb-8">
+                <p>
+                  Saya tidak memulai dari panggung yang megah atau latar belakang yang serba mudah. Di masa awal menggeluti rekayasa perangkat lunak dan pemasaran digital, saya berulang kali mengalami sindrom keraguan diri, kelelahan konsistensi, dan ketakutan akan kegagalan.
+                </p>
+                <p>
+                  Titik balik terbesar hadir ketika saya menyadari bahwa euforia motivasi sesaat tidak pernah bertahan lama. Yang benar-benar mengubah arah hidup adalah <strong>sistem kebiasaan mikro, kejujuran mengevaluasi diri, dan keberanian memanfaatkan teknologi terkini seperti AI</strong> untuk melipatgandakan dampak.
+                </p>
+              </div>
 
-            {/* Pill CTA Button (Matches: 'Discover my story →') */}
-            <div className="pt-2">
-              <button
-                onClick={() => setShowFullTimeline(true)}
-                className="px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold text-[#0E0E0E] bg-transparent hover:bg-[#E6DFD1]/50 border-2 border-[#13260A]/30 hover:border-[#13260A] transition-all flex items-center gap-2 cursor-pointer group"
-              >
-                <span>Baca Perjalanan Selengkapnya</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-
+              {/* Pill CTA Button (Matches: 'Discover my story →') */}
+              <div>
+                <button
+                  onClick={() => setShowFullTimeline(true)}
+                  className="px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold text-[#0E0E0E] bg-transparent hover:bg-[#E6DFD1]/50 border-2 border-[#13260A]/30 hover:border-[#13260A] transition-all flex items-center gap-2 cursor-pointer group"
+                >
+                  <span>Baca Perjalanan Selengkapnya</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </MotionReveal>
           </div>
 
           {/* Right Column: Cutout Portrait Over Diagonal Geometric Slash (Matching Lewis Howes Right Side) */}
           <div className="lg:col-span-5 relative flex justify-center">
-            
-            <div className="relative w-full max-w-md aspect-[4/5] flex items-end justify-center">
-              
-              {/* Crisp Diagonal Geometric Slash Backdrop (Iconic Lewis Howes style) */}
-              <div className="absolute inset-0 -rotate-3 rounded-3xl bg-gradient-to-tr from-[#E6DFD1] via-[#F2EFE8] to-[#E6DFD1]/60 transform scale-95 border border-[#13260A]/10 shadow-lg pointer-events-none" />
-              <div className="absolute inset-0 rotate-3 rounded-3xl bg-[#13260A]/5 transform scale-90 pointer-events-none" />
-
-              {/* Portrait Image of Rofianto smiling warmly and confidently */}
-              <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-xl border border-white/80">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
-                  alt="Rofianto — Personal Story and Growth Journey"
-                  className="w-full h-full object-cover object-top filter contrast-105"
-                  loading="lazy"
-                />
+            <MotionReveal delay={0.2} duration={0.85} yOffset={24} className="w-full flex justify-center">
+              <div className="relative w-full max-w-md aspect-[4/5] flex items-end justify-center">
                 
-                {/* Subtle soft vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                {/* Crisp Diagonal Geometric Slash Backdrop (Iconic Lewis Howes style) */}
+                <div className="absolute inset-0 -rotate-3 rounded-3xl bg-gradient-to-tr from-[#E6DFD1] via-[#F2EFE8] to-[#E6DFD1]/60 transform scale-95 border border-[#13260A]/10 shadow-lg pointer-events-none" />
+                <div className="absolute inset-0 rotate-3 rounded-3xl bg-[#13260A]/5 transform scale-90 pointer-events-none" />
 
-                {/* Bottom caption overlay */}
-                <div className="absolute bottom-4 left-4 right-4 text-white z-20">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#E2872A] block font-display">
-                    ROFIANTO
-                  </span>
-                  <p className="text-xs font-serif italic text-white/90">
-                    "Kita tidak harus menunggu sempurna untuk mulai bergerak."
-                  </p>
+                {/* Portrait Image of Rofianto smiling warmly and confidently */}
+                <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-xl border border-white/80">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
+                    alt="Rofianto — Personal Story and Growth Journey"
+                    className="w-full h-full object-cover object-top filter contrast-105"
+                    loading="lazy"
+                  />
+                  
+                  {/* Subtle soft vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Bottom caption overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 text-white z-20">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#E2872A] block font-display">
+                      ROFIANTO
+                    </span>
+                    <p className="text-xs font-serif italic text-white/90">
+                      "Kita tidak harus menunggu sempurna untuk mulai bergerak."
+                    </p>
+                  </div>
                 </div>
+
               </div>
-
-            </div>
-
+            </MotionReveal>
           </div>
 
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle2, MessageSquare, Mail, Phone, Instagram, Linkedin, Youtube, Video, Copy } from 'lucide-react';
+import { MotionReveal } from './ui/motion-reveal';
 
 interface ContactFormData {
   nama: string;
@@ -81,17 +82,20 @@ export const ContactSection: React.FC = () => {
     <section id="contact" className="py-24 md:py-36 bg-[#FAF8F5] border-t border-[#13260A]/15">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
-        {/* Section Header */}
-        <div className="flex items-center justify-between border-b border-[#13260A]/15 pb-4 mb-14 sm:mb-20">
-          <span className="text-xs font-bold tracking-widest text-[#13260A] uppercase font-display">
-            12 / KONTAK &amp; RESERVASI JADWAL
-          </span>
-          <span className="text-xs font-semibold text-[#0E0E0E]/50 tracking-wider uppercase font-sans">
-            FORMULIR RESMI
-          </span>
-        </div>
+        <MotionReveal>
+          {/* Section Header */}
+          <div className="flex items-center justify-between border-b border-[#13260A]/15 pb-4 mb-14 sm:mb-20">
+            <span className="text-xs font-bold tracking-widest text-[#13260A] uppercase font-display">
+              12 / KONTAK &amp; RESERVASI JADWAL
+            </span>
+            <span className="text-xs font-semibold text-[#0E0E0E]/50 tracking-wider uppercase font-sans">
+              FORMULIR RESMI
+            </span>
+          </div>
+        </MotionReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <MotionReveal delay={0.15}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Left Column: Form Header & Description */}
           <div className="lg:col-span-5 space-y-6">
@@ -320,6 +324,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
         </div>
+        </MotionReveal>
 
       </div>
     </section>

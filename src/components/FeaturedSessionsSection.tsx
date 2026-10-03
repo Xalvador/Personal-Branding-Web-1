@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { MotionReveal, StaggerContainer, StaggerItem } from './ui/motion-reveal';
 
 interface SessionCard {
   id: string;
@@ -64,90 +65,93 @@ export const FeaturedSessionsSection: React.FC<FeaturedSessionsSectionProps> = (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header: Left Title + 'All Episodes ->' + Right Circular Arrows (Matching Lewis Howes) */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
-          
-          <div className="flex items-baseline gap-4 sm:gap-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0E0E0E] tracking-tight font-display">
-              Featured Sessions
-            </h2>
-            <button
-              onClick={onViewAllTopics}
-              className="text-xs sm:text-sm font-bold text-[#0E0E0E]/70 hover:text-[#E2872A] transition-colors flex items-center gap-1 cursor-pointer"
-            >
-              <span>Semua Topik</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+        <MotionReveal>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+            
+            <div className="flex items-baseline gap-4 sm:gap-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0E0E0E] tracking-tight font-display">
+                Featured Sessions
+              </h2>
+              <button
+                onClick={onViewAllTopics}
+                className="text-xs sm:text-sm font-bold text-[#0E0E0E]/70 hover:text-[#E2872A] transition-colors flex items-center gap-1 cursor-pointer"
+              >
+                <span>Semua Topik</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {/* Right Circular Arrows */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Slide"
+                className="w-10 h-10 rounded-full border border-[#0E0E0E]/20 hover:border-[#0E0E0E] bg-white flex items-center justify-center text-[#0E0E0E] hover:bg-[#FAF8F5] transition-all shadow-sm cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleNext}
+                aria-label="Next Slide"
+                className="w-10 h-10 rounded-full border border-[#0E0E0E]/20 hover:border-[#0E0E0E] bg-white flex items-center justify-center text-[#0E0E0E] hover:bg-[#FAF8F5] transition-all shadow-sm cursor-pointer"
+              >
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
           </div>
+        </MotionReveal>
 
-          {/* Right Circular Arrows */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrev}
-              aria-label="Previous Slide"
-              className="w-10 h-10 rounded-full border border-[#0E0E0E]/20 hover:border-[#0E0E0E] bg-white flex items-center justify-center text-[#0E0E0E] hover:bg-[#FAF8F5] transition-all shadow-sm cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={handleNext}
-              aria-label="Next Slide"
-              className="w-10 h-10 rounded-full border border-[#0E0E0E]/20 hover:border-[#0E0E0E] bg-white flex items-center justify-center text-[#0E0E0E] hover:bg-[#FAF8F5] transition-all shadow-sm cursor-pointer"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-        </div>
-
-        {/* 4-Card Grid matching Lewis Howes 'Featured Guests' */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4-Card Staggered Reveal Grid */}
+        <StaggerContainer staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {FEATURED_SESSIONS.map((session) => (
-            <div
-              key={session.id}
-              onClick={() => onSelectTopic(session.topicTitle)}
-              className="group cursor-pointer flex flex-col"
-            >
-              {/* Image Box with Rounded Corners and Bottom Typography */}
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#13260A] shadow-md group-hover:shadow-xl transition-all duration-300">
-                <img
-                  src={session.photoUrl}
-                  alt={session.topicTitle}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 filter contrast-105"
-                  loading="lazy"
-                />
+            <StaggerItem key={session.id}>
+              <div
+                onClick={() => onSelectTopic(session.topicTitle)}
+                className="group cursor-pointer flex flex-col"
+              >
+                {/* Image Box with Rounded Corners and Bottom Typography */}
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#13260A] shadow-md group-hover:shadow-xl transition-all duration-300">
+                  <img
+                    src={session.photoUrl}
+                    alt={session.topicTitle}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 filter contrast-105"
+                    loading="lazy"
+                  />
 
-                {/* Gradient Overlay for bottom text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                  {/* Gradient Overlay for bottom text legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
-                {/* Top Badge */}
-                <div className="absolute top-3.5 left-3.5">
-                  <span className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider">
-                    {session.speakerTag}
+                  {/* Top Badge */}
+                  <div className="absolute top-3.5 left-3.5">
+                    <span className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider">
+                      {session.speakerTag}
+                    </span>
+                  </div>
+
+                  {/* Bottom Left Card Title (Matching Lewis Howes bold name style) */}
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="text-xl sm:text-2xl font-bold font-serif leading-tight drop-shadow-sm group-hover:text-[#E2872A] transition-colors">
+                      {session.topicTitle}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Sub-description underneath card */}
+                <div className="pt-3 px-1">
+                  <p className="text-xs sm:text-sm text-[#0E0E0E]/75 leading-snug line-clamp-2 font-sans">
+                    {session.subtitle}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-[#E2872A] mt-1.5 group-hover:translate-x-1 transition-transform">
+                    <span>Pilih Sesi Ini</span>
+                    <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>
 
-                {/* Bottom Left Card Title (Matching Lewis Howes bold name style) */}
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-xl sm:text-2xl font-bold font-serif leading-tight drop-shadow-sm group-hover:text-[#E2872A] transition-colors">
-                    {session.topicTitle}
-                  </h3>
-                </div>
               </div>
-
-              {/* Sub-description underneath card */}
-              <div className="pt-3 px-1">
-                <p className="text-xs sm:text-sm text-[#0E0E0E]/75 leading-snug line-clamp-2 font-sans">
-                  {session.subtitle}
-                </p>
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-[#E2872A] mt-1.5 group-hover:translate-x-1 transition-transform">
-                  <span>Pilih Sesi Ini</span>
-                  <ArrowRight className="w-3 h-3" />
-                </span>
-              </div>
-
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
       </div>
     </section>
